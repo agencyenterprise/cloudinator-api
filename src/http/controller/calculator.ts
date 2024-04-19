@@ -11,7 +11,7 @@ const configSchema = z.array(z.object({
 
 export function calculator(request: FastifyRequest, response: FastifyReply) {
     const body = configSchema.safeParse(request.body)
-    console.log(body)
+
     if (body.success === false) {
       return response.status(400).send({ message: 'Validation error', issues: body.error.format() })
     }
