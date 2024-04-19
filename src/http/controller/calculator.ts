@@ -4,10 +4,10 @@ import { z } from 'zod'
 import calculators from '../../services';
 const enuns = Object.keys(calculators);
 
-const configSchema = z.object({
+const configSchema = z.array(z.object({
   name: z.enum(enuns as [string, ...string[]]),
   fields: z.array(z.any())
-})
+}))
 
 export function calculator(request: FastifyRequest, response: FastifyReply) {
     const body = configSchema.safeParse(request.body)
@@ -16,8 +16,12 @@ export function calculator(request: FastifyRequest, response: FastifyReply) {
       return response.status(400).send({ message: 'Validation error', issues: body.error.format() })
     }
 
-    // @ts-ignore
-    const calculator = calculators[body.data.name]
+    return body.data.reduce((total, service) => {
+      // @ts-ignore
+      const calculator = calculators[service.name]
 
-    return calculator.calculate(body.data.fields)
+      const serviceCost = calculator.calculate(service.fields)
+
+      return total + serviceCost
+    }, 0)
   }
