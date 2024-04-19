@@ -1,0 +1,57 @@
+{
+  "name": "cloudnator-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsup src --out-dir build",
+    "start": "node build/server.js",
+    "test:create-prisma-environment": "npm link ./prisma/vitest-environment-prisma",
+    "test:install-prisma-environment": "npm link vitest-environment-prisma",
+    "test": "vitest run --dir src/use-cases",
+    "test:watch": "vitest --dir src/use-cases",
+    "pretest:e2e": "run-s test:create-prisma-environment test:install-prisma-environment",
+    "test:e2e": "vitest run --dir src/http",
+    "test:e2e:watch": "vitest --dir src/http",
+    "test:coverage": "vitest run --coverage",
+    "test:ui": "vitest --ui",
+    "studio": "npx prisma studio -b firefox -p 5173",
+    "generate": "npx prisma generate",
+    "migrate": "npx prisma migrate dev",
+    "seed": "npx prisma db seed",
+    "start-docker": "docker-compose up -d",
+    "stop-docker": "docker-compose stop",
+    "lets-code": "npm run start-docker && npm run dev"
+  },
+  "keywords": [],
+  "license": "MIT",
+  "devDependencies": {
+    "@mermaid-js/mermaid-cli": "10.1.0",
+    "@rocketseat/eslint-config": "1.2.0",
+    "@types/node": "18.15.11",
+    "@types/supertest": "2.0.12",
+    "@vitest/coverage-c8": "0.30.1",
+    "@vitest/ui": "0.30.1",
+    "npm-run-all": "4.1.5",
+    "prisma": "4.12.0",
+    "prisma-erd-generator": "1.5.4",
+    "supertest": "6.3.3",
+    "tsup": "6.7.0",
+    "tsx": "3.12.6",
+    "typescript": "5.0.4",
+    "vite-tsconfig-paths": "4.2.0",
+    "vitest": "0.30.1"
+  },
+  "dependencies": {
+    "@fastify/cookie": "8.3.0",
+    "@fastify/jwt": "6.7.1",
+    "@prisma/client": "4.12.0",
+    "dotenv": "16.0.3",
+    "fastify": "4.15.0",
+    "zod": "3.21.4"
+  }
+}
