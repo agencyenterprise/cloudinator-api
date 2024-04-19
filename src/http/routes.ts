@@ -1,9 +1,9 @@
-import { FastifyInstance } from 'fastify'
+import { FastifyInstance } from 'fastify';
+import { config } from './controller/config';
+import { calculator } from './controller/calculator';
+
 
 export async function appRoutes(app: FastifyInstance) {
-  // app.post('/users', register)
-  /* Authenticated routes */
-  app.get('/', function (request, response) {
-    response.send({ hello: 'world' })
-  });
+  app.get('/config', config);
+  app.post('/calculator', calculator);
 }
