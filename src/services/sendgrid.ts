@@ -26,7 +26,7 @@ export function calculate(fields: z.infer<typeof schema>): number {
   }
 
   // TODO fetch prices from database
-  const price = Object.entries(prices).find(([limit]) => fields[0].value < parseInt(limit))?.[1] || 0
+  const price = prices[fields.find(e => e.name === "numberOfEmails").value] || 0;
 
   return price
 }
@@ -41,6 +41,7 @@ export const config = {
       title: 'Number of emails per month',
       name: 'numberOfEmails',
       type: 'enum',
+      defaultValue: 3000,
       options: [
         { value: 3000, label: '0 - 3000' },
         { value: 50000, label: '3001 - 50,000' },
