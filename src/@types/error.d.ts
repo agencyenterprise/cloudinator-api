@@ -1,0 +1,3 @@
+interface InvalidError {
+  error: string;
+}

@@ -37,10 +37,12 @@ const prices: Record<string, number> = {
   'gpt-4-32k': 120.00,
 }
 const DEFAULT_TOKENS = 1000000
-export function calculate(fields: z.infer<typeof schema>): number {
+export function calculate(fields: z.infer<typeof schema>): number | InvalidError {
   const success = schema.safeParse(fields)
   if (!success.success) {
-    throw new Error('Invalid fields');
+    return {
+      error: 'Invalid fields'
+    };
   }
 
   // TODO fetch prices from database

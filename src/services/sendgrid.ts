@@ -19,10 +19,12 @@ const prices = {
   2500000: 1099.00,
 }
 
-export function calculate(fields: z.infer<typeof schema>): number {
+export function calculate(fields: z.infer<typeof schema>): number | InvalidError {
   const success = schema.safeParse(fields)
   if (!success.success) {
-    throw new Error('Invalid fields');
+    return {
+      error: 'Invalid fields'
+    };
   }
 
   // TODO fetch prices from database
