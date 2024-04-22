@@ -1,4 +1,4 @@
-import * as sendGrid from './sengrid';
+import * as sendGrid from './sendgrid';
 
 interface Services {
   [key: string]: any;
