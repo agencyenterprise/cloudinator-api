@@ -56,7 +56,7 @@ export function calculate(fields: z.infer<typeof schema>): number | InvalidError
 
 export const config = {
   name: 'openAi',
-  type: 'Artifial Intelligence',
+  type: 'Artificial Intelligence',
   logo: 'https://img.logoipsum.com/332.svg',
   description: 'OpenAI is an artificial intelligence research laboratory consisting of the for-profit OpenAI LP and the non-profit OpenAI Inc. The company, considered a competitor to DeepMind, conducts research in the field of artificial intelligence (AI) with the stated aim to promote and develop friendly AI in a way that benefits humanity as a whole. The company is primarily known for its GPT series of language models.',
   fields: [
