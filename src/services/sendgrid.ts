@@ -3,7 +3,7 @@ import { z } from 'zod';
 export const schema = z.array(
   z.object({
     name: z.string().nonempty(),
-    value: z.number()
+    value: z.any()
   })
 );
 
