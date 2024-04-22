@@ -10,18 +10,22 @@ const configSchema = z.array(z.object({
 }))
 
 export function calculator(request: FastifyRequest, response: FastifyReply) {
-    const body = configSchema.safeParse(request.body)
+  const body = configSchema.safeParse(request.body)
 
-    if (body.success === false) {
-      return response.status(400).send({ message: 'Validation error', issues: body.error.format() })
-    }
-
-    return body.data.reduce((total, service) => {
-      // @ts-ignore
-      const calculator = calculators[service.name]
-
-      const serviceCost = calculator.calculate(service.fields)
-
-      return total + serviceCost
-    }, 0)
+  if (body.success === false) {
+    return response.status(400).send({ message: 'Validation error', issues: body.error.format() })
   }
+
+  const result = {
+    services: [],
+    totalCost: 0
+  }
+
+  for (const service of body.data) {
+    const calculator = calculators[service.name];
+    const serviceCost = calculator.calculate(service.fields)
+    result.services.push(serviceCost);
+  }
+
+  return result;
+}

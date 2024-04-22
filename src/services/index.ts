@@ -1,4 +1,4 @@
-import * as sendGrid from './sendgrid';
+import * as sendGrid from './sengrid';
 
 export default {
   sendGrid
