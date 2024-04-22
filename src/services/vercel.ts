@@ -16,7 +16,7 @@ import { z } from 'zod';
 export const schema = z.array(
   z.object({
     name: z.enum(['type', 'numberOfDevelopers']),
-    value: z.enum(['hobby','pro']).or(z.number()),
+    value: z.enum(['hobby', 'pro']).or(z.number()).or(z.string()),
   })
 );
 
@@ -29,6 +29,7 @@ const prices: Record<string, number> = {
 
 
 export function calculate(fields: z.infer<typeof schema>): number | InvalidError {
+  console.log(fields);
   const success = schema.safeParse(fields)
   if (!success.success) {
     return {
