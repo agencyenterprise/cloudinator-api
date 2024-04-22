@@ -30,6 +30,7 @@ export function calculator(request: FastifyRequest, response: FastifyReply) {
     const calculator = serviceCalculators[service.name];
     const serviceCost = calculator.calculate(service.fields)
     result.services[service.name] = serviceCost;
+    result.totalCost += serviceCost;
   }
 
   return result;
