@@ -54,7 +54,9 @@ export function calculate(fields: z.infer<typeof schema>): number | InvalidError
   return prices[model as string] * (tokens as number) / DEFAULT_TOKENS
 }
 
+
 export const config = {
+  title: 'OpenAI',
   name: 'openAi',
   type: 'Artificial Intelligence',
   logo: 'https://img.logoipsum.com/332.svg',

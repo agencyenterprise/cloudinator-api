@@ -53,6 +53,7 @@ export function calculate(fields: z.infer<typeof schema>): number | InvalidError
 }
 
 export const config = {
+  title: 'Vercel',
   name: 'vercel',
   type: 'Hosting',
   logo: 'https://upload.wikimedia.org/wikipedia/commons/5/5e/Vercel_logo_black.svg',

@@ -68,6 +68,7 @@ export function calculate(fields: z.infer<typeof schema>): number | InvalidError
 }
 
 export const config = {
+  title : 'PostHog',
   name: 'postHog',
   type: 'analytics',
   logo: 'https://img.logoipsum.com/334.svg',

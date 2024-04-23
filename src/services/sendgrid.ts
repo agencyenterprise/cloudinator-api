@@ -34,6 +34,7 @@ export function calculate(fields: z.infer<typeof schema>): number | InvalidError
 }
 
 export const config = {
+  title: 'SendGrid',
   name: 'sendGrid',
   type: 'email',
   logo: 'https://img.logoipsum.com/331.svg',
