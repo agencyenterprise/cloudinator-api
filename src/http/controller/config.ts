@@ -1,8 +1,6 @@
-import { PrismaClient } from '@prisma/client';
+import { prisma } from '@/lib/prisma'
 
 export async function config() {
-  const prisma = new PrismaClient();
-
   const services = await prisma.service.findMany({
     select: {
       title: true,
@@ -27,8 +25,6 @@ export async function config() {
       },
     }
   });
-
-  await prisma.$disconnect();
 
   return services;
 }
