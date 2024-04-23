@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "tsx watch src/server.ts",
-    "build": "tsup src --out-dir build && prisma generate && yarn migrate",
+    "build": "tsup src --out-dir build && yarn generate && yarn migrate",
     "start": "node build/server.js",
     "studio": "npx prisma studio -b firefox -p 5173",
     "generate": "npx prisma generate",
