@@ -455,15 +455,6 @@
     commander "^10.0.0"
     puppeteer "^19.0.0"
 
-"@mermaid-js/mermaid-cli@^10.6.1":
-  version "10.8.0"
-  resolved "https://registry.yarnpkg.com/@mermaid-js/mermaid-cli/-/mermaid-cli-10.8.0.tgz#b555aa3a5bb10bae65ebee6fa065bc3db771ab88"
-  integrity sha512-xZsGR88RsP72SAXyvjU23HzsKHsq6b7/kbnmQrEuIcPrJGPOckFiP9nzHvPh3Z04MjvpDJVjtbIspt2ZQwUzzA==
-  dependencies:
-    chalk "^5.0.1"
-    commander "^10.0.0"
-    puppeteer "^19.0.0"
-
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz#7619c2eb21b25483f6d167548b4cfd5a7488c3d5"
@@ -505,11 +496,6 @@
   resolved "https://registry.yarnpkg.com/@prisma/debug/-/debug-5.12.1.tgz#007c8ad2e466d565bcd0671b8846c27f8700c722"
   integrity sha512-kd/wNsR0klrv79o1ITsbWxYyh4QWuBidvxsXSParPsYSu0ircUmNk3q4ojsgNc3/81b0ozg76iastOG43tbf8A==
 
-"@prisma/debug@5.13.0":
-  version "5.13.0"
-  resolved "https://registry.yarnpkg.com/@prisma/debug/-/debug-5.13.0.tgz#d88b0f6fafa0c216e20e284ed9fc30f1cbe45786"
-  integrity sha512-699iqlEvzyCj9ETrXhs8o8wQc/eVW+FigSsHpiskSFydhjVuwTJEfj/nIYqTaWFYuxiWQRfm3r01meuW97SZaQ==
-
 "@prisma/engines-version@5.12.0-21.473ed3124229e22d881cb7addf559799debae1ab":
   version "5.12.0-21.473ed3124229e22d881cb7addf559799debae1ab"
   resolved "https://registry.yarnpkg.com/@prisma/engines-version/-/engines-version-5.12.0-21.473ed3124229e22d881cb7addf559799debae1ab.tgz#c78d099a3fe86d446db7442e64e56987e39e7f32"
@@ -533,13 +519,6 @@
     "@prisma/debug" "5.12.1"
     "@prisma/engines-version" "5.12.0-21.473ed3124229e22d881cb7addf559799debae1ab"
     "@prisma/get-platform" "5.12.1"
-
-"@prisma/generator-helper@^4.0.0 || ^5.0.0":
-  version "5.13.0"
-  resolved "https://registry.yarnpkg.com/@prisma/generator-helper/-/generator-helper-5.13.0.tgz#9ef960e5cad763df254c666afdffd890c5c35a0f"
-  integrity sha512-i+53beJ0dxkDrkHdsXxmeMf+eVhyhOIpL0SdBga8vwe0qHPrAIJ/lpuT/Hj0y5awTmq40qiUEmhXwCEuM/Z17w==
-  dependencies:
-    "@prisma/debug" "5.13.0"
 
 "@prisma/generator-helper@^5.12.1":
   version "5.12.1"
@@ -1600,11 +1579,6 @@ dotenv@16.0.3:
   version "16.0.3"
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-16.0.3.tgz#115aec42bac5053db3c456db30cc243a5a836a07"
   integrity sha512-7GO6HghkA5fYG9TYnNxi14/7K9f5occMlp3zXAuSxn7CKCxt9xbNWG7yF8hTCSUchlfWSe3uLmlPfigevRItzQ==
-
-dotenv@^16.3.1:
-  version "16.4.5"
-  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-16.4.5.tgz#cdd3b3b604cb327e286b4762e13502f717cb099f"
-  integrity sha512-ZmdL2rui+eB2YwhsWzjInR8LldtZHGDoQ1ugH85ppHKwpUHL7j7rN0Ti9NCnGiQbhaZ11FpR+7ao1dNsmduNUg==
 
 eastasianwidth@^0.2.0:
   version "0.2.0"
@@ -3644,15 +3618,6 @@ pretty-format@^27.5.1:
     ansi-regex "^5.0.1"
     ansi-styles "^5.0.0"
     react-is "^17.0.1"
-
-prisma-erd-generator@^1.11.2:
-  version "1.11.2"
-  resolved "https://registry.yarnpkg.com/prisma-erd-generator/-/prisma-erd-generator-1.11.2.tgz#75b4321f212d0837e75f98230b03abc3488ff71f"
-  integrity sha512-abo2EBIjqJALfjm8p+uOsQk38DlU3rlLJA9/cOvcLLt8A9bjMkRwlqaZDAD/iXVZcXJRJPgJ98fEviTa+w8oTQ==
-  dependencies:
-    "@mermaid-js/mermaid-cli" "^10.6.1"
-    "@prisma/generator-helper" "^4.0.0 || ^5.0.0"
-    dotenv "^16.3.1"
 
 prisma@^5.12.1:
   version "5.12.1"
