@@ -22,7 +22,7 @@
     "studio": "npx prisma studio -b firefox -p 5173",
     "generate": "npx prisma generate",
     "migrate:dev": "npx prisma migrate dev",
-    "migrate": "npx prisma migrate",
+    "migrate": "npx prisma migrate deploy",
     "seed": "npx prisma db seed",
     "start-docker": "docker-compose up -d",
     "stop-docker": "docker-compose stop",
