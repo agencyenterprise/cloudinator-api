@@ -28,7 +28,7 @@ export async function config() {
     }
   });
 
-  prisma.$disconnect();
+  await prisma.$disconnect();
 
   return services;
 }
