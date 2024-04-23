@@ -51,30 +51,3 @@ export function calculate(fields: z.infer<typeof schema>): number | InvalidError
 
   return prices[type as string] * Number(numberOfDevelopers || 1)
 }
-
-export const config = {
-  title: 'Vercel',
-  name: 'vercel',
-  type: 'Hosting',
-  logo: 'https://upload.wikimedia.org/wikipedia/commons/5/5e/Vercel_logo_black.svg',
-  description: 'Vercel is a cloud platform for static sites and Serverless Functions that fits perfectly with your workflow. It enables developers to host Jamstack websites and web services that deploy instantly, scale automatically, and requires no supervision, all with no configuration.',
-  fields: [
-    {
-      title: 'Type',
-      name: 'type',
-      type: 'enum',
-      defaultValue: 'hobby',
-      options: [
-        { value: 'hobby', label: 'Hobby' },
-        { value: 'pro', label: 'Pro' },
-      ],
-      required: true
-    },
-    {
-      title: 'Number of developers',
-      name: 'numberOfDevelopers',
-      type: 'number',
-      required: false
-    }
-  ]
-}

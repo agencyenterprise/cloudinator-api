@@ -53,35 +53,3 @@ export function calculate(fields: z.infer<typeof schema>): number | InvalidError
 
   return prices[model as string] * (tokens as number) / DEFAULT_TOKENS
 }
-
-
-export const config = {
-  title: 'OpenAI',
-  name: 'openAi',
-  type: 'Artificial Intelligence',
-  logo: 'https://img.logoipsum.com/332.svg',
-  description: 'OpenAI is an artificial intelligence research laboratory consisting of the for-profit OpenAI LP and the non-profit OpenAI Inc. The company, considered a competitor to DeepMind, conducts research in the field of artificial intelligence (AI) with the stated aim to promote and develop friendly AI in a way that benefits humanity as a whole. The company is primarily known for its GPT series of language models.',
-  fields: [
-    {
-      title: 'Model',
-      name: 'model',
-      type: 'enum',
-      defaultValue: 'gpt-3.5-turbo-0125',
-      options: [
-        { value: 'gpt-4-turbo-2024-04-09', label: 'GPT-4 Turbo (2024-04-09)' },
-        { value: 'gpt-4', label: 'GPT-4' },
-        { value: 'gpt-4-32k', label: 'GPT-4 32k' },
-        { value: 'gpt-3.5-turbo-0125', label: 'GPT-3.5 Turbo 0125' },
-        { value: 'gpt-3.5-turbo-instruct', label: 'GPT-3.5 Turbo Instruct' },
-      ],
-      required: true
-    },
-    {
-      title: 'Tokens',
-      name: 'tokens',
-      type: 'number',
-      defaultValue: DEFAULT_TOKENS,
-      required: false
-    }
-  ]
-}

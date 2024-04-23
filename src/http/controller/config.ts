@@ -1,8 +1,34 @@
-import serviceCalculators from '../../services';
+import { PrismaClient } from '@prisma/client';
 
-export function config() {
-  return Object.keys(serviceCalculators).map((key) => {
-    const service = serviceCalculators[key];
-    return service.config;
-  })
+export async function config() {
+  const prisma = new PrismaClient();
+
+  const services = await prisma.service.findMany({
+    select: {
+      title: true,
+      name: true,
+      type: true,
+      logo: true,
+      description: true,
+      fields: {
+        select: {
+          title: true,
+          name: true,
+          type: true,
+          defaultValue: true,
+          required: true,
+          options: {
+            select: {
+              value: true,
+              label: true,
+            },
+          },
+        },
+      },
+    }
+  });
+
+  prisma.$disconnect();
+
+  return services;
 }
