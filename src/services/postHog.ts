@@ -1,5 +1,12 @@
 import { z } from 'zod';
 
+import { prisma } from '@/lib/prisma';
+
+interface PriceDetails {
+  freeTearUpTo: number;
+  price: number;
+}
+
 /**
  * Example of fields:
  * fields: [
@@ -21,33 +28,15 @@ import { z } from 'zod';
  *   },
  * ]
  */
+const FIELDS = ['productAnalytics', 'sessionReplay', 'featureFlags', 'surveys']
 export const schema = z.array(
   z.object({
-    name: z.enum(['productAnalytics', 'sessionReplay', 'featureFlags', 'surveys']),
+    name: z.enum(FIELDS as [string, ...string[]]),
     value: z.number().or(z.string().transform(Number))
   })
 );
 
-// TODO: move this to a database
-const prices: Record<string, any> = {
-  productAnalytics: {
-    freeTearUpTo: 1_000_000,
-    price: 0.000248
-  },
-  sessionReplay: {
-    freeTearUpTo: 5_000,
-    price: 0.04
-  },
-  featureFlags: {
-    freeTearUpTo: 1_000_000,
-    price: 0.0001
-  },
-  surveys: {
-    freeTearUpTo: 250,
-    price: 0.2
-  },
-}
-export function calculate(fields: z.infer<typeof schema>): number | InvalidError {
+export async function calculate(fields: z.infer<typeof schema>): Promise<number | InvalidError> {
   const success = schema.safeParse(fields)
   if (!success.success) {
     return {
@@ -55,14 +44,28 @@ export function calculate(fields: z.infer<typeof schema>): number | InvalidError
     };
   }
 
-  const total = fields.reduce((acc, { name, value }) => {
-    const freeTearUpTo = prices[name].freeTearUpTo
+  const fieldsObject = fields.reduce((acc, { name, value }) => {
+    acc[name] = value
+    return acc
+  }, {} as Record<string, number>)
+
+  const fieldOptions = await prisma.field.findMany({
+    where: {
+      name: { in: FIELDS },
+    },
+  });
+
+  const total = fieldOptions.reduce((acc, field) => {
+    // @ts-ignore
+    const { freeTearUpTo, price } = field.priceDetails as PriceDetails;
+
+    const value = fieldsObject[field.name]
     if (freeTearUpTo < value) {
-      return acc += (value - freeTearUpTo) * prices[name].price
+      return acc += (value - freeTearUpTo) * price
     }
 
     return acc
-  }, 0)
+  }, 0);
 
   return total
 }

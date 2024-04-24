@@ -1,24 +1,27 @@
 import { z } from 'zod';
 
+import { prisma } from '@/lib/prisma';
+import { FieldWithOptions } from '@/@types/services';
+
 /**
  * Example of fields:
  * fields: [
  *   {
- *     name: 'Model',
+ *     name: 'model',
  *     value: 'gpt-4-turbo-2024-04-09'
  *   },
  *   {
- *     name: 'Tokens',
+ *     name: 'tokens',
  *     value: 1000000
  *   }
  * ]
  */
+const FIELDS = ['model', 'tokens']
 export const schema = z.array(
   z.object({
-    name: z.enum(['model', 'tokens']),
+    name: z.enum(FIELDS as [string, ...string[]]),
     value: z.string().or(z.number())
   }).superRefine((data, ctx) => {
-      console.log(data)
       if (data.name === 'model') {
         return typeof data.value === 'string' && !!data.value;
       } else {
@@ -27,17 +30,7 @@ export const schema = z.array(
     }),
 );
 
-// TODO: move this to a database
-// Prices for 1kk tokens
-const prices: Record<string, number> = {
-  'gpt-3.5-turbo-0125': 1.50,
-  'gpt-3.5-turbo-instruct': 2.00,
-  'gpt-4-turbo-2024-04-09': 30.00,
-  'gpt-4': 60.00,
-  'gpt-4-32k': 120.00,
-}
-const DEFAULT_TOKENS = 1000000
-export function calculate(fields: z.infer<typeof schema>): number | InvalidError {
+export async function calculate(fields: z.infer<typeof schema>): Promise<number | InvalidError> {
   const success = schema.safeParse(fields)
   if (!success.success) {
     return {
@@ -45,11 +38,30 @@ export function calculate(fields: z.infer<typeof schema>): number | InvalidError
     };
   }
 
-  // TODO fetch prices from database
   const { model, tokens } = fields.reduce((acc, { name, value }) => {
     acc[name] = value
     return acc
-  }, {} as Record<string, string | number>)
+  }, {} as Record<string, string | number>);
 
-  return prices[model as string] * (tokens as number) / DEFAULT_TOKENS
+  const fieldOptions = await prisma.field.findMany({
+    where: {
+      name: { in: FIELDS },
+    },
+    include: {
+      options: {
+        where: {
+          value: String(model),
+        },
+      },
+    }
+  });
+
+  const fieldsObject = fieldOptions.reduce((acc, field) => {
+    acc[field.name] = field
+    return acc
+  }, {} as Record<string, FieldWithOptions>);
+
+  const defaultTokens = Number(fieldsObject.tokens.defaultValue) || 1_000_000;
+  const price = fieldsObject.model.options[0].price || 0;
+  return price * (tokens as number || defaultTokens) / defaultTokens
 }
