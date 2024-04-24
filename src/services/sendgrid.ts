@@ -1,8 +1,10 @@
 import { z } from 'zod';
 
+import { prisma } from '@/lib/prisma';
+
 export const schema = z.array(
   z.object({
-    name: z.string().nonempty(),
+    name: z.literal('numberOfEmails'),
     value: z.string().transform(Number).or(z.number())
   })
 );
@@ -19,7 +21,7 @@ const prices = {
   2500000: 1099.00,
 }
 
-export function calculate(fields: z.infer<typeof schema>): number | InvalidError {
+export async function calculate(fields: z.infer<typeof schema>): Promise<number | InvalidError> {
   const success = schema.safeParse(fields)
   if (!success.success) {
     return {
@@ -27,8 +29,19 @@ export function calculate(fields: z.infer<typeof schema>): number | InvalidError
     };
   }
 
-  // TODO fetch prices from database
-  const price = prices[fields.find(e => e.name === "numberOfEmails").value] || 0;
+  const { value } = fields.find(e => e.name === "numberOfEmails") || {};
+  const fieldOptions = await prisma.field.findFirst({
+    where: {
+      name: "numberOfEmails",
+    },
+    include: {
+      options: {
+        where: {
+          value: String(value),
+        },
+      },
+    }
+  });
 
-  return price
+  return fieldOptions?.options[0].price ?? 0
 }

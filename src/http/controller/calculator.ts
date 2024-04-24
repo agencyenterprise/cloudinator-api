@@ -14,7 +14,7 @@ interface ServiceCost {
   totalCost: 0;
 }
 
-export function calculator(request: FastifyRequest, response: FastifyReply) {
+export async function calculator(request: FastifyRequest, response: FastifyReply) {
   const body = configSchema.safeParse(request.body)
 
   if (body.success === false) {
@@ -28,7 +28,7 @@ export function calculator(request: FastifyRequest, response: FastifyReply) {
 
   for (const service of body.data) {
     const calculator = serviceCalculators[service.name];
-    const serviceCost = calculator.calculate(service.fields)
+    const serviceCost = await calculator.calculate(service.fields)
     result.services[service.name] = serviceCost;
     result.totalCost += serviceCost;
   }

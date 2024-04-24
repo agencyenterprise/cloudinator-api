@@ -1,5 +1,8 @@
 import { z } from 'zod';
 
+import { prisma } from '@/lib/prisma';
+import { FieldWithOptions } from '@/@types/services';
+
 /**
  * Example of fields:
  * fields: [
@@ -13,21 +16,15 @@ import { z } from 'zod';
  *   }
  * ]
  */
+const FIELDS = ['type', 'numberOfDevelopers']
 export const schema = z.array(
   z.object({
-    name: z.enum(['type', 'numberOfDevelopers']),
+    name: z.enum(FIELDS as [string, ...string[]]),
     value: z.enum(['hobby', 'pro']).or(z.number()).or(z.string()),
   })
 );
 
-// TODO: move this to a database
-const prices: Record<string, number> = {
-  'hobby': 0,
-  'pro': 20,
-}
-
-export function calculate(fields: z.infer<typeof schema>): number | InvalidError {
-  console.log(fields);
+export async function calculate(fields: z.infer<typeof schema>): Promise<number | InvalidError> {
   const success = schema.safeParse(fields)
   if (!success.success) {
     return {
@@ -35,7 +32,6 @@ export function calculate(fields: z.infer<typeof schema>): number | InvalidError
     };
   }
 
-  // TODO fetch prices from database
   const { type, numberOfDevelopers } = fields.reduce((acc, { name, value }) => {
     acc[name] = value
     return acc
@@ -47,5 +43,24 @@ export function calculate(fields: z.infer<typeof schema>): number | InvalidError
     }
   }
 
-  return prices[type as string] * Number(numberOfDevelopers || 1)
+  const fieldOptions = await prisma.field.findMany({
+    where: {
+      name: { in: FIELDS },
+    },
+    include: {
+      options: {
+        where: {
+          value: String(type),
+        },
+      },
+    }
+  });
+
+  const fieldsObject = fieldOptions.reduce((acc, field) => {
+    acc[field.name] = field
+    return acc
+  }, {} as Record<string, FieldWithOptions>);
+
+  const price = fieldsObject.type.options[0].price || 0;
+  return price * Number(numberOfDevelopers || 1)
 }
