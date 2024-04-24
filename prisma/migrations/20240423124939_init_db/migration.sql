@@ -46,10 +46,10 @@ ALTER TABLE "options" ADD CONSTRAINT "options_fieldId_fkey" FOREIGN KEY ("fieldI
 
 -- Seed
 INSERT INTO "services" ("id", "title", "name", "type", "logo", "description") VALUES
-(1, 'Open AI', 'openAi', 'AI', 'https://img.logoipsum.com/332.svg', 'OpenAI is an artificial intelligence research laboratory consisting of the for-profit OpenAI LP and the non-profit OpenAI Inc. The company, considered a competitor to DeepMind, conducts research in the field of artificial intelligence (AI) with the stated aim to promote and develop friendly AI in a way that benefits humanity as a whole. The company is primarily known for its GPT series of language models.'),
-(2, 'PostHog', 'postHog', 'analytics', 'https://img.logoipsum.com/334.svg', 'PostHog is an open-source product analytics platform'),
-(3, 'SendGrid', 'sendgrid', 'email', 'https://img.logoipsum.com/335.svg', 'SendGrid is a customer communication platform for transactional and marketing email.'),
-(4, 'Vercel', 'vercel', 'hosting', 'https://img.logoipsum.com/336.svg', 'Vercel is a cloud platform for static sites and Serverless Functions that fits perfectly with your workflow. It enables developers to host Jamstack websites and web services that deploy instantly, scale automatically, and requires no supervision, all with no configuration.');
+(1, 'Open AI', 'openAi', 'AI', 'https://static-00.iconduck.com/assets.00/openai-icon-2021x2048-4rpe5x7n.png', 'OpenAI is an artificial intelligence research laboratory consisting of the for-profit OpenAI LP and the non-profit OpenAI Inc. The company, considered a competitor to DeepMind, conducts research in the field of artificial intelligence (AI) with the stated aim to promote and develop friendly AI in a way that benefits humanity as a whole. The company is primarily known for its GPT series of language models.'),
+(2, 'PostHog', 'postHog', 'analytics', 'https://posthog.com/static/c3a3dad72aff6ab04b06b8cee62e62cf/f21c0/Sticker-PosthogVertical.png', 'PostHog is an open-source product analytics platform'),
+(3, 'SendGrid', 'sendgrid', 'email', 'https://simpauldesign.com/wp-content/uploads/2020/02/SendGrid-new-logo.png', 'SendGrid is a customer communication platform for transactional and marketing email.'),
+(4, 'Vercel', 'vercel', 'hosting', 'https://logowik.com/content/uploads/images/vercel1868.jpg', 'Vercel is a cloud platform for static sites and Serverless Functions that fits perfectly with your workflow. It enables developers to host Jamstack websites and web services that deploy instantly, scale automatically, and requires no supervision, all with no configuration.');
 
 -- Open AI
 INSERT INTO "fields" ("id", "title", "name", "type", "defaultValue", "required", "serviceId") VALUES
