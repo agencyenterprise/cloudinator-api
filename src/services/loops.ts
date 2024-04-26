@@ -21,6 +21,9 @@ export async function calculate(fields: z.infer<typeof schema>): Promise<number 
   const fieldOptions = await prisma.field.findFirst({
     where: {
       name: "numberOfContacts",
+      service: {
+        name: 'loops'
+      },
     },
     include: {
       options: {
