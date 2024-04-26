@@ -4,7 +4,7 @@ import { prisma } from '@/lib/prisma';
 
 export const schema = z.array(
   z.object({
-    name: z.literal('numberOfEmails'),
+    name: z.literal('numberOfContacts'),
     value: z.string().transform(Number).or(z.number())
   })
 );
@@ -17,10 +17,10 @@ export async function calculate(fields: z.infer<typeof schema>): Promise<number 
     };
   }
 
-  const { value } = fields.find(e => e.name === "numberOfEmails") || {};
+  const { value } = fields.find(e => e.name === "numberOfContacts") || {};
   const fieldOptions = await prisma.field.findFirst({
     where: {
-      name: "numberOfEmails",
+      name: "numberOfContacts",
     },
     include: {
       options: {

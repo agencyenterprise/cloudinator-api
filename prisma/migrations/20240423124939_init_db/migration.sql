@@ -49,7 +49,8 @@ INSERT INTO "services" ("id", "title", "name", "type", "logo", "description") VA
 (1, 'Open AI', 'openAi', 'AI', 'https://static-00.iconduck.com/assets.00/openai-icon-2021x2048-4rpe5x7n.png', 'OpenAI is an artificial intelligence research laboratory consisting of the for-profit OpenAI LP and the non-profit OpenAI Inc. The company, considered a competitor to DeepMind, conducts research in the field of artificial intelligence (AI) with the stated aim to promote and develop friendly AI in a way that benefits humanity as a whole. The company is primarily known for its GPT series of language models.'),
 (2, 'PostHog', 'postHog', 'analytics', 'https://posthog.com/static/c3a3dad72aff6ab04b06b8cee62e62cf/f21c0/Sticker-PosthogVertical.png', 'PostHog is an open-source product analytics platform'),
 (3, 'SendGrid', 'sendgrid', 'email', 'https://simpauldesign.com/wp-content/uploads/2020/02/SendGrid-new-logo.png', 'SendGrid is a customer communication platform for transactional and marketing email.'),
-(4, 'Vercel', 'vercel', 'hosting', 'https://logowik.com/content/uploads/images/vercel1868.jpg', 'Vercel is a cloud platform for static sites and Serverless Functions that fits perfectly with your workflow. It enables developers to host Jamstack websites and web services that deploy instantly, scale automatically, and requires no supervision, all with no configuration.');
+(4, 'Vercel', 'vercel', 'hosting', 'https://logowik.com/content/uploads/images/vercel1868.jpg', 'Vercel is a cloud platform for static sites and Serverless Functions that fits perfectly with your workflow. It enables developers to host Jamstack websites and web services that deploy instantly, scale automatically, and requires no supervision, all with no configuration.'),
+(7, 'Loops', 'loops', 'email', 'https://mintlify.s3-us-west-1.amazonaws.com/loops/logo/light.png', 'Loops is a customer communication platform for transactional and marketing email.');
 
 -- Open AI
 INSERT INTO "fields" ("id", "title", "name", "type", "defaultValue", "required", "serviceId") VALUES
@@ -93,3 +94,16 @@ INSERT INTO "fields" ("id", "title", "name", "type", "defaultValue", "required",
 INSERT INTO "options" ("value", "label", "price", "fieldId") VALUES
 ('hobby', 'Hobby', 0, 8),
 ('pro', 'Pro', 20, 8);
+
+-- Loops
+INSERT INTO "fields" ("id", "title", "name", "type", "defaultValue", "required", "serviceId") VALUES
+(13, 'Number of emails per month', 'numberOfContacts', 'enum', '3000', true, 3);
+
+INSERT INTO "options" ("value", "label", "price", "fieldId") VALUES
+(3000, '0 - 1000', 0, 13),
+(50000, '1001 - 5,000', 49, 13),
+(100000, '5,001 - 10,000', 99, 13),
+(300000, '10,001 - 15,000', 149, 13),
+(700000, '15,001 - 25,000', 199, 13),
+(1000000, '25,001 - 50,000', 249, 13),
+(2000000, '50,001 - 100,000', 399, 13);
