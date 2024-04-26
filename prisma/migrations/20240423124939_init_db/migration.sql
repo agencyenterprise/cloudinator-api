@@ -127,9 +127,16 @@ INSERT INTO "options" ("value", "label", "price", "fieldId") VALUES
 
 -- Simple Analytics
 INSERT INTO "services" ("id", "title", "name", "type", "logo", "description") VALUES
-(9, 'Simple Analytics', 'simpleAnalytics', 'analytics', '', 'Simple Analytics gives you the analytics you need without invading the privacy of your users, with a user-friendly interface and great performance.');
+(9, 'Simple Analytics', 'simpleAnalytics', 'analytics', 'https://assets.simpleanalytics.com/press/logo-ratio-3-2/white-on-red.svg', 'Simple Analytics gives you the analytics you need without invading the privacy of your users, with a user-friendly interface and great performance.');
 
 INSERT INTO "fields" ("id", "title", "name", "type", "defaultValue", "required", "serviceId", "priceDetails") VALUES
-(3, 'Data Points', 'dataPoints', 'number', '100000', false, 9, '{"starterUpTo": 100000, "startPrice": 9, "businessUpTo": 1000000, "businessPrice": 49 }'),
-(4, 'Developers', 'developers', 'number', '1', false, 9, '{ "starterUpTo": 1, "startPrice": 9, "businessUpTo": 10, "businessPrice": 49 }'),
-(5, 'Websites', 'websites', 'number', '10', false, 9, '{ "starterUpTo": 10, "startPrice": 9, "businessUpTo": 100, "businessPrice": 49 }');
+(15, 'Data Points', 'dataPoints', 'number', '100000', true, 9, '{"starterUpTo": 100000, "startPrice": 9, "businessUpTo": 1000000, "businessPrice": 49 }'),
+(16, 'Developers', 'developers', 'number', '1', true, 9, '{ "starterUpTo": 1, "startPrice": 9, "businessUpTo": 10, "businessPrice": 49 }'),
+(17, 'Websites', 'websites', 'number', '10', true, 9, '{ "starterUpTo": 10, "startPrice": 9, "businessUpTo": 100, "businessPrice": 49 }');
+
+-- Clerk
+INSERT INTO "services" ("id", "title", "name", "type", "logo", "description") VALUES
+(10, 'Clerk', 'clerk', 'user-management', 'https://workable-application-form.s3.amazonaws.com/advanced/production/5faba140a2e294c4d44b07eb/5a2307b9-37fe-9bd0-b5f4-2666152d200d', 'Clerk is a modern authentication and user management solution for web and mobile applications.');
+
+INSERT INTO "fields" ("id", "title", "name", "type", "defaultValue", "required", "serviceId", "priceDetails") VALUES
+(18, 'Montly active users', 'mau', 'number', '10000', false, 10, '{ "freeTearUpTo": 10000, "proPlanPrice": 25, "pricePerMAU": 0.02 }');
