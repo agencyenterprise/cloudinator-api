@@ -100,10 +100,27 @@ INSERT INTO "fields" ("id", "title", "name", "type", "defaultValue", "required",
 (13, 'Number of emails per month', 'numberOfContacts', 'enum', '3000', true, 3);
 
 INSERT INTO "options" ("value", "label", "price", "fieldId") VALUES
-(3000, '0 - 1000', 0, 13),
-(50000, '1001 - 5,000', 49, 13),
-(100000, '5,001 - 10,000', 99, 13),
-(300000, '10,001 - 15,000', 149, 13),
-(700000, '15,001 - 25,000', 199, 13),
-(1000000, '25,001 - 50,000', 249, 13),
-(2000000, '50,001 - 100,000', 399, 13);
+(1000, '0 - 1000', 0, 13),
+(5000, '1001 - 5,000', 49, 13),
+(10000, '5,001 - 10,000', 99, 13),
+(15000, '10,001 - 15,000', 149, 13),
+(25000, '15,001 - 25,000', 199, 13),
+(50000, '25,001 - 50,000', 249, 13),
+(100000, '50,001 - 100,000', 399, 13);
+
+-- Amplitude
+INSERT INTO "services" ("id", "title", "name", "type", "logo", "description") VALUES
+(8, 'Amplitude', 'amplitude', 'analytics', '', 'Amplitude is a product analytics platform that provides digital product intelligence to help companies understand user behavior, build better products, and grow businesses.'),
+
+INSERT INTO "fields" ("id", "title", "name", "type", "defaultValue", "required", "serviceId") VALUES
+(14, 'Monthly Tracked Users', 'mtu', 'enum', '1000', true, 8);
+
+INSERT INTO "options" ("value", "label", "price", "fieldId") VALUES
+(1000, '0 - 1000', 0, 14),
+(5000, '1001 - 5,000', 99, 14),
+(10000, '5,001 - 10,000', 149, 14),
+(25000, '10,001 - 25,000', 249, 14),
+(50000, '25,001 - 50,000', 449, 14),
+(100000, '50,001 - 100,000', 849, 14),
+(200000, '100,001 - 200,000', 1680, 14),
+(300000, '200,001 - 300,000', 2520, 14);
