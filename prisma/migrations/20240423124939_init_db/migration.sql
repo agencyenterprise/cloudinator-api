@@ -124,3 +124,12 @@ INSERT INTO "options" ("value", "label", "price", "fieldId") VALUES
 (100000, '50,001 - 100,000', 849, 14),
 (200000, '100,001 - 200,000', 1680, 14),
 (300000, '200,001 - 300,000', 2520, 14);
+
+-- Simple Analytics
+INSERT INTO "services" ("id", "title", "name", "type", "logo", "description") VALUES
+(9, 'Simple Analytics', 'simpleAnalytics', 'analytics', '', 'Simple Analytics gives you the analytics you need without invading the privacy of your users, with a user-friendly interface and great performance.');
+
+INSERT INTO "fields" ("id", "title", "name", "type", "defaultValue", "required", "serviceId", "priceDetails") VALUES
+(3, 'Data Points', 'dataPoints', 'number', '100000', false, 9, '{"starterUpTo": 100000, "startPrice": 9, "businessUpTo": 1000000, "businessPrice": 49 }'),
+(4, 'Developers', 'developers', 'number', '1', false, 9, '{ "starterUpTo": 1, "startPrice": 9, "businessUpTo": 10, "businessPrice": 49 }'),
+(5, 'Websites', 'websites', 'number', '10', false, 9, '{ "starterUpTo": 10, "startPrice": 9, "businessUpTo": 100, "businessPrice": 49 }');

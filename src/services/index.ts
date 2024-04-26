@@ -5,6 +5,7 @@ import * as postHog from "./postHog";
 import * as gemini from "./gemini";
 import * as loops from "./loops";
 import * as amplitude from "./amplitude";
+import * as simpleAnalytics from "./simpleAnalytics";
 
 interface Services {
   [key: string]: any;
@@ -18,4 +19,5 @@ export default {
   gemini,
   loops,
   amplitude,
+  simpleAnalytics,
 } as Services;
