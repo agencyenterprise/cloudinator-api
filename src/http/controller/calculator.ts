@@ -1,35 +1,45 @@
-import type { FastifyReply, FastifyRequest } from 'fastify';
-import { z } from 'zod'
+import type { FastifyReply, FastifyRequest } from "fastify";
+import { z } from "zod";
 
-import serviceCalculators from '../../services';
+import serviceCalculators from "../../services";
 const enuns = Object.keys(serviceCalculators);
 
-const configSchema = z.array(z.object({
-  name: z.enum(enuns as [string, ...string[]]),
-  fields: z.array(z.any())
-}))
+const configSchema = z.array(
+  z.object({
+    name: z.enum(enuns as [string, ...string[]]),
+    fields: z.array(z.any()),
+  })
+);
 
 interface ServiceCost {
-  services: Record<string, any>;
+  services: any[];
   totalCost: 0;
 }
 
-export async function calculator(request: FastifyRequest, response: FastifyReply) {
-  const body = configSchema.safeParse(request.body)
+export async function calculator(
+  request: FastifyRequest,
+  response: FastifyReply
+) {
+  const body = configSchema.safeParse(request.body);
 
   if (body.success === false) {
-    return response.status(400).send({ message: 'Validation error', issues: body.error.format() })
+    return response
+      .status(400)
+      .send({ message: "Validation error", issues: body.error.format() });
   }
 
   const result: ServiceCost = {
-    services: {},
-    totalCost: 0
-  }
+    services: [],
+    totalCost: 0,
+  };
 
   for (const service of body.data) {
     const calculator = serviceCalculators[service.name];
-    const serviceCost = await calculator.calculate(service.fields)
-    result.services[service.name] = serviceCost;
+    const serviceCost = await calculator.calculate(service.fields);
+    result.services.push({
+      name: service.name,
+      cost: serviceCost,
+    });
     result.totalCost += serviceCost;
   }
 
