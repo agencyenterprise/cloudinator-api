@@ -7,6 +7,7 @@ import * as loops from "./loops";
 import * as amplitude from "./amplitude";
 import * as simpleAnalytics from "./simpleAnalytics";
 import * as clerk from "./clerk";
+import * as railway from "./railway";
 
 interface Services {
   [key: string]: any;
@@ -22,4 +23,5 @@ export default {
   amplitude,
   simpleAnalytics,
   clerk,
+  railway,
 } as Services;
