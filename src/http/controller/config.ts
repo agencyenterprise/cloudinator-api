@@ -23,6 +23,9 @@ export async function config() {
             },
           },
         },
+        orderBy: {
+          name: 'asc',
+        },
       },
     }
   });
