@@ -7,6 +7,7 @@ UPDATE "services" set "link" = 'https://posthog.com/pricing' WHERE "id" = 2;
 UPDATE "services" set "link" = 'https://sendgrid.com/en-us/pricing' WHERE "id" = 3;
 UPDATE "services" set "link" = 'https://vercel.com/pricing' WHERE "id" = 4;
 UPDATE "services" set "link" = 'https://railway.app/pricing' WHERE "id" = 5;
+UPDATE "services" set "link" = 'https://workspace.google.com/pricing.html' WHERE "id" = 6;
 UPDATE "services" set "link" = 'https://loops.so/pricing' WHERE "id" = 7;
 UPDATE "services" set "link" = 'https://amplitude.com/pricing' WHERE "id" = 8;
 UPDATE "services" set "link" = 'https://www.simpleanalytics.com/pricing' WHERE "id" = 9;
