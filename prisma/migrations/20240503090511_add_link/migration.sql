@@ -1,5 +1,5 @@
 -- AlterTable
-ALTER TABLE "services" ADD COLUMN "link" TEXT;
+ALTER TABLE "services" ADD COLUMN "link" TEXT NULL;
 
 -- Seed
 UPDATE "services" set "link" = 'https://openai.com/api/pricing' WHERE "id" = 1;
