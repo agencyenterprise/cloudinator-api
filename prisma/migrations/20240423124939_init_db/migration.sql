@@ -91,7 +91,7 @@ INSERT INTO "options" ("value", "label", "price", "fieldId") VALUES
 
 -- Vercel
 INSERT INTO "services" ("id", "title", "name", "type", "logo", "description") VALUES
-(4, 'Vercel', 'vercel', 'hosting', 'https://logowik.com/content/uploads/images/vercel1868.jpg', 'Vercel is a cloud platform for static sites and Serverless Functions that fits perfectly with your workflow. It enables developers to host Jamstack websites and web services that deploy instantly, scale automatically, and requires no supervision, all with no configuration.'),
+(4, 'Vercel', 'vercel', 'hosting', 'https://logowik.com/content/uploads/images/vercel1868.jpg', 'Vercel is a cloud platform for static sites and Serverless Functions that fits perfectly with your workflow. It enables developers to host Jamstack websites and web services that deploy instantly, scale automatically, and requires no supervision, all with no configuration.');
 
 INSERT INTO "fields" ("id", "title", "name", "type", "defaultValue", "required", "serviceId", "priceDetails") VALUES
 (9, 'Number of developers', 'numberOfDevelopers', 'number', 1, false, 4, '{ "pricePerDev": 20 }');
@@ -121,7 +121,7 @@ INSERT INTO "options" ("value", "label", "price", "fieldId") VALUES
 
 -- Amplitude
 INSERT INTO "services" ("id", "title", "name", "type", "logo", "description") VALUES
-(8, 'Amplitude', 'amplitude', 'analytics', '', 'Amplitude is a product analytics platform that provides digital product intelligence to help companies understand user behavior, build better products, and grow businesses.'),
+(8, 'Amplitude', 'amplitude', 'analytics', '', 'Amplitude is a product analytics platform that provides digital product intelligence to help companies understand user behavior, build better products, and grow businesses.');
 
 INSERT INTO "fields" ("id", "title", "name", "type", "defaultValue", "required", "serviceId") VALUES
 (14, 'Monthly Tracked Users', 'mtu', 'enum', '1000', true, 8);

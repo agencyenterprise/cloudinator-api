@@ -16,6 +16,7 @@ model Service {
   name  String @unique
   type  String
   logo  String
+  link  String
   description String
   fields Field[]
 
