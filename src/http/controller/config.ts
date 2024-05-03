@@ -8,6 +8,7 @@ export async function config() {
       type: true,
       logo: true,
       description: true,
+      link: true,
       fields: {
         select: {
           title: true,
