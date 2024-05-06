@@ -24,13 +24,17 @@ export async function calculate(fields: z.infer<typeof schema>): Promise<number 
       name: FIELD_NAME,
     },
     include: {
-      options: {
-        where: {
-          value: String(value),
-        },
-      },
+      options: true,
     }
   });
 
-  return fieldOptions?.options[0].price ?? 0
+  let price = 0;
+  for (let option of fieldOptions?.options ?? []) {
+    if (Number(option.value) >= Number(value)) {
+      price = option.price;
+      break;
+    }
+  }
+
+  return price;
 }

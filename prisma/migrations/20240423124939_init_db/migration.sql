@@ -76,7 +76,7 @@ INSERT INTO "services" ("id", "title", "name", "type", "logo", "description") VA
 (3, 'SendGrid', 'sendgrid', 'email', 'https://simpauldesign.com/wp-content/uploads/2020/02/SendGrid-new-logo.png', 'SendGrid is a customer communication platform for transactional and marketing email.');
 
 INSERT INTO "fields" ("id", "title", "name", "type", "defaultValue", "required", "serviceId") VALUES
-(7, 'Number of emails per month', 'numberOfEmails', 'enum', '3000', true, 3);
+(7, 'Number of emails per month', 'numberOfEmails', 'slider', '3000', true, 3);
 
 
 INSERT INTO "options" ("value", "label", "price", "fieldId") VALUES
@@ -108,7 +108,7 @@ INSERT INTO "services" ("id", "title", "name", "type", "logo", "description") VA
 (7, 'Loops', 'loops', 'email', 'https://mintlify.s3-us-west-1.amazonaws.com/loops/logo/light.png', 'Loops is a customer communication platform for transactional and marketing email.');
 
 INSERT INTO "fields" ("id", "title", "name", "type", "defaultValue", "required", "serviceId") VALUES
-(13, 'Number of emails per month', 'numberOfContacts', 'enum', '3000', true, 3);
+(13, 'Number of emails per month', 'numberOfContacts', 'slider', '3000', true, 7);
 
 INSERT INTO "options" ("value", "label", "price", "fieldId") VALUES
 (1000, '0 - 1000', 0, 13),
@@ -124,7 +124,7 @@ INSERT INTO "services" ("id", "title", "name", "type", "logo", "description") VA
 (8, 'Amplitude', 'amplitude', 'analytics', '', 'Amplitude is a product analytics platform that provides digital product intelligence to help companies understand user behavior, build better products, and grow businesses.');
 
 INSERT INTO "fields" ("id", "title", "name", "type", "defaultValue", "required", "serviceId") VALUES
-(14, 'Monthly Tracked Users', 'mtu', 'enum', '1000', true, 8);
+(14, 'Monthly Tracked Users', 'mtu', 'slider', '1000', true, 8);
 
 INSERT INTO "options" ("value", "label", "price", "fieldId") VALUES
 (1000, '0 - 1000', 0, 14),
@@ -151,3 +151,12 @@ INSERT INTO "services" ("id", "title", "name", "type", "logo", "description") VA
 
 INSERT INTO "fields" ("id", "title", "name", "type", "defaultValue", "required", "serviceId", "priceDetails") VALUES
 (18, 'Montly active users', 'mau', 'number', '10000', false, 10, '{ "freeTearUpTo": 10000, "proPlanPrice": 25, "pricePerMAU": 0.02 }');
+
+-- Mux
+INSERT INTO "services" ("id", "title", "name", "type", "logo", "description") VALUES
+(11, 'Mux', 'mux', 'streaming', '', 'Mux is a video API that makes it easy to build beautiful video. Powered by data and designed by video experts, Mux makes beautiful video possible for every development team.');
+
+INSERT INTO "fields" ("id", "title", "name", "type", "defaultValue", "required", "serviceId", "priceDetails") VALUES
+(19, 'Montly views', 'monthViews', 'number', '100000', false, 10, '{ "freeTearUpTo": 10000, "proPlanPrice": 25, "pricePerMAU": 0.02 }');
+
+
