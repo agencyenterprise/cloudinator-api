@@ -76,7 +76,7 @@ INSERT INTO "services" ("id", "title", "name", "type", "logo", "description") VA
 (3, 'SendGrid', 'sendgrid', 'email', 'https://simpauldesign.com/wp-content/uploads/2020/02/SendGrid-new-logo.png', 'SendGrid is a customer communication platform for transactional and marketing email.');
 
 INSERT INTO "fields" ("id", "title", "name", "type", "defaultValue", "required", "serviceId") VALUES
-(7, 'Number of emails per month', 'numberOfEmails', 'slider', '3000', true, 3);
+(7, 'Emails per month', 'numberOfEmails', 'slider', '3000', true, 3);
 
 
 INSERT INTO "options" ("value", "label", "price", "fieldId") VALUES
@@ -94,21 +94,21 @@ INSERT INTO "services" ("id", "title", "name", "type", "logo", "description") VA
 (4, 'Vercel', 'vercel', 'hosting', 'https://logowik.com/content/uploads/images/vercel1868.jpg', 'Vercel is a cloud platform for static sites and Serverless Functions that fits perfectly with your workflow. It enables developers to host Jamstack websites and web services that deploy instantly, scale automatically, and requires no supervision, all with no configuration.');
 
 INSERT INTO "fields" ("id", "title", "name", "type", "defaultValue", "required", "serviceId", "priceDetails") VALUES
-(9, 'Number of developers', 'numberOfDevelopers', 'number', 1, false, 4, '{ "pricePerDev": 20 }');
+(9, 'Developers', 'numberOfDevelopers', 'number', 1, false, 4, '{ "pricePerDev": 20 }');
 
 -- Railway
 INSERT INTO "services" ("id", "title", "name", "type", "logo", "description") VALUES
 (5, 'Railway', 'railway', 'hosting', 'https://railway.app/_next/static/images/logo-512x512-0f1b6b1b1', 'Railway is a platform for deploying and running web apps and APIs with ease.');
 
 INSERT INTO "fields" ("id", "title", "name", "type", "defaultValue", "required", "serviceId", "priceDetails") VALUES
-(12, 'Number of developers', 'numberOfDevelopers', 'number', 1, false, 5, '{ "priceOneDev": 5, "pricePerDev": 20 }');
+(12, 'Developers', 'numberOfDevelopers', 'number', 1, false, 5, '{ "priceOneDev": 5, "pricePerDev": 20 }');
 
 -- Loops
 INSERT INTO "services" ("id", "title", "name", "type", "logo", "description") VALUES
 (7, 'Loops', 'loops', 'email', 'https://mintlify.s3-us-west-1.amazonaws.com/loops/logo/light.png', 'Loops is a customer communication platform for transactional and marketing email.');
 
 INSERT INTO "fields" ("id", "title", "name", "type", "defaultValue", "required", "serviceId") VALUES
-(13, 'Number of emails per month', 'numberOfContacts', 'slider', '3000', true, 7);
+(13, 'Emails per month', 'numberOfContacts', 'slider', '3000', true, 7);
 
 INSERT INTO "options" ("value", "label", "price", "fieldId") VALUES
 (1000, '0 - 1000', 0, 13),
@@ -154,9 +154,9 @@ INSERT INTO "fields" ("id", "title", "name", "type", "defaultValue", "required",
 
 -- Mux
 INSERT INTO "services" ("id", "title", "name", "type", "logo", "description") VALUES
-(11, 'Mux', 'mux', 'streaming', '', 'Mux is a video API that makes it easy to build beautiful video. Powered by data and designed by video experts, Mux makes beautiful video possible for every development team.');
+(11, 'Mux', 'mux', 'streaming', 'stream', 'Mux is a video API that makes it easy to build beautiful video. Powered by data and designed by video experts, Mux makes beautiful video possible for every development team.');
 
 INSERT INTO "fields" ("id", "title", "name", "type", "defaultValue", "required", "serviceId", "priceDetails") VALUES
-(19, 'Montly views', 'monthViews', 'number', '100000', false, 10, '{ "freeTearUpTo": 10000, "proPlanPrice": 25, "pricePerMAU": 0.02 }');
+(19, 'Monthly views', 'monthViews', 'number', '100000', false, 11, '{ "freeTearUpTo": 100000, "priceExtraViewsFreeTear": 0.6, "proPlanPrice": 199, "proTearUpTo": 1000000, "priceExtraViewsProTear": 0.5 }');
 
 

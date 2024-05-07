@@ -8,6 +8,7 @@ import * as amplitude from "./amplitude";
 import * as simpleAnalytics from "./simpleAnalytics";
 import * as clerk from "./clerk";
 import * as railway from "./railway";
+import * as mux from "./mux";
 
 interface Services {
   [key: string]: any;
@@ -24,4 +25,5 @@ export default {
   simpleAnalytics,
   clerk,
   railway,
+  mux,
 } as Services;

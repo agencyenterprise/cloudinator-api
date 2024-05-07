@@ -16,6 +16,7 @@ export async function config() {
           type: true,
           defaultValue: true,
           required: true,
+          maxSelectableValue: true,
           options: {
             select: {
               value: true,

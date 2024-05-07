@@ -30,6 +30,7 @@ model Field {
   type         String
   defaultValue String?
   required     Boolean @default(true)
+  maxSelectableValue Int?
   options      Option[]
 
   priceDetails Json?

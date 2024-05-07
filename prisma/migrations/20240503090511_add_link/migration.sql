@@ -12,6 +12,7 @@ UPDATE "services" set "link" = 'https://loops.so/pricing' WHERE "id" = 7;
 UPDATE "services" set "link" = 'https://amplitude.com/pricing' WHERE "id" = 8;
 UPDATE "services" set "link" = 'https://www.simpleanalytics.com/pricing' WHERE "id" = 9;
 UPDATE "services" set "link" = 'https://clerk.com/pricing' WHERE "id" = 10;
+UPDATE "services" set "link" = 'https://www.mux.com/pricing/data' WHERE "id" = 11;
 
 -- Make link column not nullable
 ALTER TABLE "services" ALTER COLUMN "link" SET NOT NULL;
