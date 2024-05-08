@@ -31,6 +31,7 @@ model Field {
   defaultValue String?
   required     Boolean @default(true)
   maxSelectableValue Int?
+  minSelectableValue Int?
   options      Option[]
 
   priceDetails Json?
