@@ -44,7 +44,7 @@ export async function calculator(
     let growthCost = 0;
     if (growthFactor && growthFactor !== 1) {
       growthCost = await calculator.calculate(service.fields.map((field) => {
-        const value = Number(field.value) ? field.value * growthFactor : field.value;
+        const value = Number(field.value) ? Math.ceil(field.value * growthFactor) : field.value;
         return {
           ...field,
           value
