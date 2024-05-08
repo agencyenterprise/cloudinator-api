@@ -29,7 +29,10 @@ export async function config() {
           name: 'asc',
         },
       },
-    }
+    },
+    orderBy: {
+      type: 'asc',
+    },
   });
 
   return services;
